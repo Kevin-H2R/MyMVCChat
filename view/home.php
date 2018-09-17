@@ -13,5 +13,9 @@
                 }, $messages);
             ?>
         </ul>
+        <form action="../controller/home.php" method="post">
+            <textarea title="Message" name="messageText"></textarea>
+            <input type="submit" value="Send">
+        </form>
     </body>
 </html>

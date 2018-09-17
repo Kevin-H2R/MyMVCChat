@@ -8,4 +8,13 @@
     }
     $username = $_SESSION['username'];
     $messages = getAll();
+    if (isset($_POST['messageText'])) {
+        $messageText = htmlspecialchars($_POST['messageText']);
+        $message = [
+            'text' => $messageText,
+            'username' => $username,
+            'date' => date('Y-m-d H:i:s'),
+        ];
+        postMessage($message);
+    }
     require('../view/home.php');
