@@ -6,6 +6,8 @@ Small chat in PHP 5.6 using a homemade MVC pattern
 
 Clone in your Apache's web root directory
 
+Setup the database using the `./bdd.sql` script
+
 Replace database configuration in `./config.php`
 
 Enjoy
