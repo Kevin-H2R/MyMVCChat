@@ -8,12 +8,13 @@
                 echo "<div style='color: red'>$error</div>";
             }
         ?>
+        <h4>Register</h4>
         <form method="post" action="../controller/register.php">
             <input type="text" placeholder="username" name="username" minlength="3">
             <input type="password" placeholder="password" name="password" minlength="3">
             <input type="submit" value="Register">
         </form>
-
+        <h4>Login</h4>
         <form method="post" action="../controller/login.php">
             <input type="text" placeholder="username" minlength="3" name="username">
             <input type="password" placeholder="password" minlength="3" name="password">
