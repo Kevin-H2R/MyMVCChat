@@ -2,7 +2,7 @@
 
     function register($username, $password)
     {
-        require_once('../config.php');
+        require('../config.php');
         $connection = mysqli_connect($bdd_host, $bdd_user, $bdd_password, $bdd_database, $bdd_port);
         if (!$connection) {
             return false;
@@ -20,7 +20,7 @@
 
     function login($username, $password)
     {
-        require_once('../config.php');
+        require('../config.php');
         $connection = mysqli_connect($bdd_host, $bdd_user, $bdd_password, $bdd_database, $bdd_port);
         if (!$connection) {
             return false;
@@ -35,4 +35,22 @@
         }
         mysqli_close($connection);
         return true;
+    }
+
+    function getLoggedInUsers()
+    {
+        require('../config.php');
+        $connection = mysqli_connect($bdd_host, $bdd_user, $bdd_password, $bdd_database, $bdd_port);
+        if (!$connection) {
+            return false;
+        }
+        $query = "SELECT username from user
+                  WHERE user.is_online = true";
+        $result = mysqli_query($connection, $query);
+        $users = [];
+        while ($row = mysqli_fetch_row($result)) {
+            $users[] = $row[0];
+        }
+        mysqli_close($connection);
+        return $users;
     }
