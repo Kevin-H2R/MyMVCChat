@@ -17,6 +17,8 @@
             header('Location: ../index.php');
             exit();
         }
+
+        $error = true;
     }
 
     require('../view/authentication.php');
