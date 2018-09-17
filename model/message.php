@@ -36,10 +36,25 @@
         $query = "INSERT INTO message (text, date, user_id)
                 VALUES('$text', '$date', $userId)";
         $result = mysqli_query($connection, $query);
+        if (!$result) {
+            mysqli_close($connection);
+            return false;
+        }
+        userSentMessage($userId, $connection);
         mysqli_close($connection);
+        return true;
+    }
+
+    function userSentMessage($userId, $connection)
+    {
+        $date = date('Y-m-d H:i:s');
+        $query = "UPDATE user SET last_access = '$date'
+                      WHERE user.id = $userId";
+        $result = mysqli_query($connection, $query);
         if (!$result) {
             return false;
         }
+
         return true;
     }
 

@@ -21,5 +21,6 @@
         if ($isMessagePosted) {
             $messages[] = $message;
         }
+        header('Location: home.php');
     }
     require('../view/home.php');
