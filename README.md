@@ -4,7 +4,7 @@ Small chat in PHP 5.6 using a homemade MVC pattern
 
 ### Setup
 
-Clone in your Apache's `www/` directory
+Clone in your Apache's web root directory
 
 Replace database configuration in `./config.php`
 
