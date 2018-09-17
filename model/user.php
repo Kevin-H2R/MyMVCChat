@@ -8,8 +8,9 @@
             return false;
         }
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO user (username, password, is_online)
-                VALUES('$username', '$password', 1)";
+        $date = date('Y-m-d H:i:s');
+        $query = "INSERT INTO user (username, password, last_access)
+                VALUES('$username', '$password', '$date')";
         $result = mysqli_query($connection, $query);
         mysqli_close($connection);
         if (!$result) {
@@ -32,8 +33,25 @@
                 mysqli_close($connection);
                 return false;
             }
+            $lastAccessUpdated = updateLastAccess($row[0], $connection);
+            if (!$lastAccessUpdated) {
+                return false;
+            }
         }
         mysqli_close($connection);
+        return true;
+    }
+
+    function updateLastAccess($userId, $connection)
+    {
+        $date = date('Y-m-d H:i:s');
+        $query = "UPDATE user SET last_access = '$date'
+                  WHERE user.id = $userId";
+        $result = mysqli_query($connection, $query);
+        if (!$result) {
+            return false;
+        }
+
         return true;
     }
 
@@ -44,8 +62,10 @@
         if (!$connection) {
             return false;
         }
+        $minutes = 24;
+        $sessionThreshold = date('Y-m-d H:i:s', time() - $minutes * 60);
         $query = "SELECT username from user
-                  WHERE user.is_online = true";
+                  WHERE user.last_access > '$sessionThreshold'";
         $result = mysqli_query($connection, $query);
         $users = [];
         while ($row = mysqli_fetch_row($result)) {
