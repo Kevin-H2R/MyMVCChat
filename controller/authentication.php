@@ -1,5 +1,11 @@
 <?php
 
+    /**
+     * Method made to factorize similar code of register and login
+     * and displaying custom error message if any error occurs
+     * @param $method
+     * @param $errorMessage
+     */
     function authenticateWithMethod($method, $errorMessage)
     {
         if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true){

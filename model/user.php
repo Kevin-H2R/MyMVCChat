@@ -1,5 +1,11 @@
 <?php
 
+    /**
+     * Inserts a new user in the database. Encrypt password
+     * @param $username
+     * @param $password
+     * @return bool
+     */
     function register($username, $password)
     {
         require('../config.php');
@@ -19,6 +25,12 @@
         return true;
     }
 
+    /**
+     * Logs a user in
+     * @param $username
+     * @param $password
+     * @return bool
+     */
     function login($username, $password)
     {
         require('../config.php');
@@ -42,6 +54,14 @@
         return true;
     }
 
+    /**
+     * Updates user's last_access column
+     * [Note] This method is the same as in model/user.php but I did not find
+     * a way to dodge this code repetition
+     * @param $userId
+     * @param $connection
+     * @return bool
+     */
     function updateLastAccess($userId, $connection)
     {
         $date = date('Y-m-d H:i:s');
@@ -55,6 +75,11 @@
         return true;
     }
 
+    /**
+     * Retrieves all connected users. Looking if their last action is inferior
+     * to php default session time (24mins)
+     * @return array|bool
+     */
     function getLoggedInUsers()
     {
         require('../config.php');

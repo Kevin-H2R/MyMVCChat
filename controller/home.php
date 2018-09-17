@@ -22,5 +22,6 @@
             $messages[] = $message;
         }
         header('Location: home.php');
+        exit();
     }
     require('../view/home.php');

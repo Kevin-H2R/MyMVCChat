@@ -1,4 +1,8 @@
 <?php
+    /**
+     * Retrieves all messages from database
+     * @return array|bool
+     */
     function getAll()
     {
         require('../config.php');
@@ -21,6 +25,11 @@
         return $data;
     }
 
+    /**
+     * Inserts a new message in database
+     * @param $message
+     * @return bool
+     */
     function postMessage($message)
     {
         require('../config.php');
@@ -45,6 +54,14 @@
         return true;
     }
 
+    /**
+     * Updates user last_access column
+     * [Note] This method is the same as in model/user.php but I did not find
+     * a way to dodge this code repetition
+     * @param $userId
+     * @param $connection
+     * @return bool
+     */
     function userSentMessage($userId, $connection)
     {
         $date = date('Y-m-d H:i:s');
@@ -58,6 +75,12 @@
         return true;
     }
 
+    /**
+     * Retrieves a user's id from its username
+     * @param $username
+     * @param $connection
+     * @return int
+     */
     function retrieveUserId($username, $connection)
     {
         $userQuery = "SELECT id from user where user.username = '$username'";
