@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `user`(
   isOnline tinyint(1),
   CONSTRAINT u_username UNIQUE (username),
   PRIMARY KEY (id)
-);
+)ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS message(
   id int NOT NULL AUTO_INCREMENT,
@@ -17,4 +17,4 @@ CREATE TABLE IF NOT EXISTS message(
   user_id int NOT NULL,
   CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(id),
   PRIMARY KEY(id)
-);
+)ENGINE=InnoDB;
