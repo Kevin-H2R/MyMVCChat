@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `user`(
   id int NOT NULL AUTO_INCREMENT,
   username varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  isOnline tinyint(1),
+  is_online tinyint(1),
   CONSTRAINT u_username UNIQUE (username),
   PRIMARY KEY (id)
 )ENGINE=InnoDB;
