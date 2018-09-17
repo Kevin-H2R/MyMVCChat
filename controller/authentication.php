@@ -13,7 +13,8 @@
             exit();
         }
 
-        if (isset($_POST['username']) && isset($_POST['password'])) {
+        if (isset($_POST['username']) && isset($_POST['password']) &&
+            strlen($_POST['username']) > 3 && strlen($_POST['password']) > 3) {
             $username = htmlspecialchars($_POST['username']);
             $password = htmlspecialchars($_POST['password']);
             $isMethodSuccessful = $method($username, $password);
