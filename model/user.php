@@ -8,6 +8,7 @@
         if (!$connection) {
             return false;
         }
+        $password = password_hash($password, PASSWORD_DEFAULT);
         $query = "INSERT INTO user (username, password, is_online)
                 VALUES('$username', '$password', 1)";
         $result = mysqli_query($connection, $query);
