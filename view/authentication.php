@@ -4,10 +4,8 @@
         <h1>Welcome to IAD's T'Chat.</h1>
         <h3>Please register or log in</h3>
         <?php
-            if (isset($loginError)) {
-                echo "<div style='color: red'>$loginError</div>";
-            } elseif (isset($registrationError)) {
-                echo "<div style='color: red'>$registrationError</div>";
+            if (isset($error)) {
+                echo "<div style='color: red'>$error</div>";
             }
         ?>
         <form method="post" action="../controller/register.php">
