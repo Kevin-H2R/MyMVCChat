@@ -4,5 +4,5 @@
         header('Location: controller/home.php');
         exit();
     }
-    header('Location: controller/authentication.php');
+    header('Location: controller/register.php');
     exit();

@@ -10,15 +10,15 @@
     if (isset($_POST['username']) && isset($_POST['password'])) {
         $username = htmlspecialchars($_POST['username']);
         $password = htmlspecialchars($_POST['password']);
-        $isRegistered = register($username, $password);
-        if ($isRegistered) {
+        $isLoggedIn = login($username, $password);
+        if ($isLoggedIn) {
             $_SESSION['loggedIn'] = true;
             $_SESSION['username'] = $username;
             header('Location: ../index.php');
             exit();
         }
 
-        $error = true;
+        $loginError = "Username and password did not match";
     }
 
     require('../view/authentication.php');
