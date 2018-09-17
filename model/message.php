@@ -29,7 +29,7 @@
             return false;
         }
         $text = $message['text'];
-        $username = $message['username'];
+        $username = $message['user'];
         $date = $message['date'];
         $userId = retrieveUserId($username, $connection);
 
